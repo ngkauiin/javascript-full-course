@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Coin Flip</title>
+  </head>
+  <body>
+    <p>Coin Flip</p>
+    <p class="scoreboard">wins: 0, losses: 0</p>
+    <button onclick="
+      playGame('heads');
+
+    ">Heads</button>
+    <button onclick="
+      playGame('tails');
+    ">Tails</button>
+    <button onclick="
+      resetScore();
+    ">Reset Score</button>
+    <p class="player-move"></p>
+    <p class="message"></p>
+  </body>
+
+  <script>
+    let result ='';
+    let guess = '';
+    let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0
+    };
+    document.querySelector('.scoreboard').innerText = 
+        `wins: ${score.wins}, losses: ${score.losses}`;
+    function playGame(guess) {
+      // if (Math.random() < 0.5) {
+      //   result = 'heads'
+      // } else {
+      //   result = 'tails'
+      // }
+      Math.random() <0.5 ? result = 'heads' : result = 'tails';
+      document.querySelector('.player-move').innerHTML = `You chose: ${guess}`
+      if (guess === result) {
+        document.querySelector('.message').innerText = 'You win!';
+        score.wins++;
+      } else {
+        document.querySelector('.message').innerText = 'You lose!';
+        score.losses++;
+      }
+      // guess === result ? alert('You win!') : alert('You lose!')
+      localStorage.setItem('score',JSON.stringify(score));
+      document.querySelector('.scoreboard').innerText = 
+        `wins: ${score.wins}, losses: ${score.losses}`;
+    }
+
+    function resetScore() {
+      score.wins = 0;
+      score.losses = 0;
+      localStorage.removeItem('score');
+      document.querySelector('.scoreboard').innerText = 
+        `wins: ${score.wins}, losses: ${score.losses}`;
+      document.querySelector('.message').innerText = 'Reset';
+    }
+
+    
+    
+  </script>
+</html>

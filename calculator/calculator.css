@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 46px;
+  color: white;
+  background-color: rgb(0, 0, 0);
+}
+
+p {
+  margin: 0;
+}
+
+.display {
+  margin: 10px 0;
+}
+
+.is-empty {
+  padding: 27px;
+}
+.number-button,
+.right-size-button, 
+.clear-button {
+  font-size: 25px;
+  height: 60px;
+  width: 60px;
+  color: white;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.number-button, 
+.clear-button {
+  background-color: rgb(41, 41, 41);
+}
+
+.right-size-button {
+  background-color: rgb(254, 160, 10);
+}
+
+.clear-button {
+  font-size: 16px;
+}
+.button-container {
+  display: grid;
+  width: 280px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  row-gap: 15px;
+}

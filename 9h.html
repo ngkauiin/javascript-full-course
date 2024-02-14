@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>9h</title>
+  </head>
+  <body>
+    <input onkeyup="displayOnKeyUp(event)" placeholder="Type something" type="text">
+    <p class="text"></p>
+  </body>
+
+  <script>
+    function displayOnKeyUp(event) {
+      console.log(event.key);
+      document.querySelector('.text').innerHTML+= event.key;
+    }
+  </script>
+</html>

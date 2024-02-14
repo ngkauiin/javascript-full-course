@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>C to F</title>
+  </head>
+  <body>
+    
+  </body>
+  <script>
+    function temp_C2F(temp_C) {
+      return (temp_C * 9 / 5 ) + 32;
+    }
+    function temp_F2C(temp_F) {
+      return (temp_F - 32) * 5 / 9;
+    }
+    function convertTemp(temp, unit) {
+      if (unit === 'C') {
+        return temp_C2F(temp)+'F';
+      } else if (unit === 'F') {
+        return temp_F2C(temp)+'C';
+      }
+    }
+  </script>
+</html>
