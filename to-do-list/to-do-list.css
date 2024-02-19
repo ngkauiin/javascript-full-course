@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.delete-button {
+  background-color: darkred;
+}
+
+.add-button {
+  background-color: green;
+}
+
+.delete-button,
+.add-button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  font-size: 15px;
+}
+
+.name-input {
+  font-size: 15px;
+  padding: 6px;
+}
+
+.to-do-grid, 
+.to-do-list-grid {
+  display: grid;
+  grid-template-columns: 200px 100px 100px;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.to-do-grid {
+  align-items: center;
+}
+
+.to-do-name,
+.to-do-date {
+  font-size: 15px;
+  padding: 3px;
+}

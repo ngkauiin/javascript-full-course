@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>App</title>
+  </head>
+  <body>
+    <button onclick="
+      totalMessage++;
+    ">Add message</button>
+    <button onclick="
+      removeMessage();
+    ">Remove message</button>
+
+
+    <script>
+      let totalMessage = 0;
+      let isNewMessages = false;
+      setIntervalId = setInterval(function () {
+        if (!isNewMessages && totalMessage) {
+          document.title = `(${totalMessage}) New messages`;
+          isNewMessages = true;
+        } else {
+          document.title = 'App'
+          isNewMessages = false;
+        }
+      },1000)
+
+      function removeMessage() {
+        if (totalMessage) {
+          totalMessage--;
+        }
+        console.log(totalMessage);
+      }
+    </script>
+  </body>
+</html>
