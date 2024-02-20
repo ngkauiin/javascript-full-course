@@ -10,24 +10,19 @@ const resetButtonContainerElement = document.querySelector('.reset-confirm-conta
 let isAutoPlaying = false;
 let intervalId;
 let titleIntervalId;
-let isNewMessages = false;
-let totalGame = 0;
 
 function autoPlay() {
   if (!isAutoPlaying) {
     intervalId = setInterval(() => {
       const playerMove = pickComputerMove();
       playGame(playerMove);
-      totalGame++;
     }, 500);
 
     titleIntervalId = setInterval(() => {
-      if (!isNewMessages) {
+      if (document.title === 'Rock Paper Scissors') {
         document.title = `AUTO PLAYING`;
-        isNewMessages = true;
       } else {
         document.title = 'Rock Paper Scissors';
-        isNewMessages = false;
       }
     },1000)
 
@@ -36,7 +31,6 @@ function autoPlay() {
   } else {
     clearInterval(intervalId);
     clearInterval(titleIntervalId);
-    totalGame = 0;
     document.title = 'Rock Paper Scissors';
     autoPlayButtonElement.innerHTML = 'AUTO<p class="on-off-text">OFF</p>';
     isAutoPlaying = false;
@@ -91,7 +85,7 @@ document.body.addEventListener('keydown', (event)=>{
     autoPlay();
   } else if (event.key === ' ') {
     resetButtonContainerElement.classList.remove('toHide');
-  }
+  } 
 });
 
 function playGame(playerMove) {
@@ -175,27 +169,17 @@ function resetScore() {
 }
 
 let resetScoreTimeoutId;
-let isResetScoreTimeoutRunning = false;
-const statusTextElement = document.querySelector('.status-text');
 
 function timeoutStatusText(textToDisplay) {
+  const statusTextElement = document.querySelector('.status-text');
   statusTextElement.classList.remove('toHide');
   statusTextElement.innerHTML = textToDisplay;
-  if (!isResetScoreTimeoutRunning) {
-    resetScoreTimeoutId = setTimeout(() => {
-      statusTextElement.classList.add('toHide');
-      isResetScoreTimeoutRunning = false;
-    },2000)
-    isResetScoreTimeoutRunning = true;
-  } else {
-    clearTimeout(resetScoreTimeoutId);
-    resetScoreTimeoutId = setTimeout(() => {
-      statusTextElement.classList.add('toHide');
-      isResetScoreTimeoutRunning = false;
-    },1500)
-    isResetScoreTimeoutRunning = true;
-  }
-}
+
+  clearTimeout(resetScoreTimeoutId);
+  resetScoreTimeoutId = setTimeout(()=> {
+    statusTextElement.classList.add('toHide');
+  }, 2000)
+};
 
 function updateScoreElement() {
 document.querySelector('.score').innerText = 

@@ -6,6 +6,7 @@
   <body>
     <button onclick="
       totalMessage++;
+      displayNotification();
     ">Add message</button>
     <button onclick="
       removeMessage();
@@ -14,22 +15,38 @@
 
     <script>
       let totalMessage = 0;
-      let isNewMessages = false;
-      setIntervalId = setInterval(function () {
-        if (!isNewMessages && totalMessage) {
-          document.title = `(${totalMessage}) New messages`;
-          isNewMessages = true;
-        } else {
-          document.title = 'App'
-          isNewMessages = false;
+      let intervalId;
+      let isDisplayNotification = false;
+
+      function displayNotification() {
+        if (isDisplayNotification) {
+          return;
         }
-      },1000)
+
+        isDisplayNotification = true;
+
+        intervalId = setInterval(()=> {
+          if (document.title === 'App' && totalMessage > 0) {
+            document.title = `(${totalMessage}) New messages`;
+          } else {
+            document.title = 'App';
+          }
+        },1000)
+      }
 
       function removeMessage() {
         if (totalMessage) {
           totalMessage--;
+        } else {
+          stopNotification()
         }
         console.log(totalMessage);
+      }
+
+      function stopNotification() {
+        clearInterval(intervalId);
+        isDisplayNotification = false;
+        document.title = 'App';
       }
     </script>
   </body>
