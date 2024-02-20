@@ -27,6 +27,7 @@ function startTimer() {
 
   // when timer start, change to button text
   startStopButtonElement.innerHTML = 'Stop';
+  startStopButtonElement.classList.add('stop');
   lapResetButtonElement.innerHTML = 'Lap';
 
   // main timer interval, displaying on the 
@@ -66,6 +67,7 @@ function timerCounter(minute,second,hunderdthOfSecond) {
 function stopTimer() {
   isTimerRunning = false;
   startStopButtonElement.innerHTML = 'Start';
+  startStopButtonElement.classList.remove('stop');
   lapResetButtonElement.innerHTML = 'Reset';
   clearInterval(timerIntervalId);
   clearInterval(lapTimerIntervalId);
@@ -97,12 +99,14 @@ function renderLapList() {
     const {lapCount} = lapList[i];
     const {timer} = lapList[i];
     const html = `
+      <div class="lap-container">
         <div class="lap-count">
           Lap ${lapCount}
         </div>
         <div class="lap-time-display">
           ${timer}
         </div>
+      </div>
       `;
     lapListHTML+=html;
   }

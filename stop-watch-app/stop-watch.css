@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(24, 24, 24);
+  color: white;
+  margin: auto;
+}
+
+.time-display {
+  font-size: 150px;
+  text-align: center;
+  padding: 50px 0px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+.button-container,
+.lap-container {
+  margin: 0px 200px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lap-reset-button,
+.start-stop-button {
+  width: 150px;
+  height: 150px;
+  border: 10px rgb(24, 24, 24) double;
+  border-radius: 500px;
+  font-size: 30px;
+}
+
+.start-stop-button {
+  background-color: rgba(19, 117, 19, 0.4);
+  color: rgb(77, 255, 61);
+}
+
+.start-stop-button:hover {
+  background-color: rgba(19, 117, 19, 0.3);
+}
+
+.start-stop-button:active {
+  background-color: rgba(19, 117, 19, 0.2);
+}
+
+.start-stop-button.stop{
+  background-color: rgba(117, 19, 19, 0.4);
+  color: red;
+}
+.start-stop-button.stop:hover{
+  background-color: rgba(117, 19, 19, 0.3);
+  color: red;
+}
+.start-stop-button.stop:active{
+  background-color: rgba(117, 19, 19, 0.2);
+  color: red;
+}
+
+
+.lap-reset-button {
+  background-color: rgba(128, 128, 128, 0.4);
+  color: white;
+  margin-right: 180px;
+}
+
+.lap-reset-button:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+.lap-reset-button:active {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.lap-container {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  font-size: 30px;
+  padding: 10px 20px;
+}
+
+.lap-count {
+  margin-right: 200px;
+}

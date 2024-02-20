@@ -7,22 +7,26 @@
   </head>
 
   <body>
-    <div class="time-display">
+    <header class="time-display">
       00:00.00
-    </div>
-    <button class="lap-reset-button">
-      Lap
-    </button>
-    <button class="start-stop-button">
-      Start
-    </button>
+    </header>
+    <section class="button-container">
+      <button class="lap-reset-button">
+        Lap
+      </button>
+      <button class="start-stop-button">
+        Start
+      </button>
+    </section>
     <div class="lap-record-display">
-      <div class="lap-count">
-        Lap 1
-      </div>
-      <div class="lap-time-display">
-        00:00.00
-      </div>
+      <!-- <div class="lap-container">
+        <div class="lap-count">
+          Lap ${lapCount}
+        </div>
+        <div class="lap-time-display">
+          ${timer}
+        </div>
+      </div> -->
     </div>
     <script src="stop-watch.js"></script>
   </body>
