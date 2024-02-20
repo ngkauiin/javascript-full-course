@@ -112,8 +112,8 @@ function lapTimer() {
   minute_lap = 0;
   second_lap = 0;
   hunderdthOfSecond_lap = 0;
-  lapList.push({lapCount,timer});
   lapCount++;
+  lapList.push({lapCount,timer});
   renderLapList();
 }
 
