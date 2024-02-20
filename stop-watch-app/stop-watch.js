@@ -1,7 +1,3 @@
-const startStopButtonElement = document.querySelector('.start-stop-button');
-const timeDisplayElement = document.querySelector('.time-display');
-const lapResetButtonElement = document.querySelector('.lap-reset-button');
-
 let timerIntervalId;
 let lapTimerIntervalId;
 let hunderdthOfSecond = 0;
@@ -14,6 +10,10 @@ let minute_lap = 0;
 
 let isTimerRunning = false;
 
+const startStopButtonElement = document.querySelector('.start-stop-button');
+const timeDisplayElement = document.querySelector('.time-display');
+const lapResetButtonElement = document.querySelector('.lap-reset-button');
+
 startStopButtonElement.addEventListener('click', ()=>{
   !isTimerRunning ? startTimer(): stopTimer();
 })
@@ -24,10 +24,12 @@ lapResetButtonElement.addEventListener('click', ()=>{
 
 function startTimer() {
   isTimerRunning = true;
+
+  // when timer start, change to button text
   startStopButtonElement.innerHTML = 'Stop';
   lapResetButtonElement.innerHTML = 'Lap';
 
-  // main timer interval
+  // main timer interval, displaying on the 
   timerIntervalId = setInterval(()=> {
     [minute,second,hunderdthOfSecond] = timerCounter(minute,second,hunderdthOfSecond);
     timeDisplayElement.innerHTML = formatTimer(minute,second,hunderdthOfSecond);
@@ -36,6 +38,7 @@ function startTimer() {
   // lap timer interval
   lapTimerIntervalId = setInterval(()=> {
     [minute_lap,second_lap,hunderdthOfSecond_lap] = timerCounter(minute_lap,second_lap,hunderdthOfSecond_lap);
+    // keep updating lap timer of the first lap element 
     document.querySelectorAll('.lap-time-display')
     .forEach((object, index)=>{
       if (index === 0) {
@@ -82,12 +85,14 @@ function formatTimer(minute,second,hunderdthOfSecond) {
 let lapCount;
 let lapList;
 
+// initialise the lap timer and lap display
 resetAllLap();
 renderLapList();
 
 function renderLapList() {
   let lapListHTML = '';
 
+  // changing the order to display the last item in lapList first so the current lap time is always at the top
   for (let i = lapList.length - 1; i >= 0; i--) {
     const {lapCount} = lapList[i];
     const {timer} = lapList[i];
@@ -101,18 +106,20 @@ function renderLapList() {
       `;
     lapListHTML+=html;
   }
-
   document.querySelector('.lap-record-display')
     .innerHTML = lapListHTML;  
 }
 
 function lapTimer() {
-  let timer = formatTimer(minute_lap,second_lap,hunderdthOfSecond_lap);
-  lapList[lapList.length-1].timer = timer;
+  // reset the lap timer for new lap
+  lapCount++;
   minute_lap = 0;
   second_lap = 0;
   hunderdthOfSecond_lap = 0;
-  lapCount++;
+
+  let timer = formatTimer(minute_lap,second_lap,hunderdthOfSecond_lap);
+  // update the current lap time to the last item in lapList before pushing a new time to prevent display error when rendoring
+  lapList[lapList.length-1].timer = timer;
   lapList.push({lapCount,timer});
   renderLapList();
 }
