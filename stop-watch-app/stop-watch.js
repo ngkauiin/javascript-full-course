@@ -111,13 +111,13 @@ function renderLapList() {
 }
 
 function lapTimer() {
+  let timer = formatTimer(minute_lap,second_lap,hunderdthOfSecond_lap);
+
   // reset the lap timer for new lap
   lapCount++;
   minute_lap = 0;
   second_lap = 0;
   hunderdthOfSecond_lap = 0;
-
-  let timer = formatTimer(minute_lap,second_lap,hunderdthOfSecond_lap);
   // update the current lap time to the last item in lapList before pushing a new time to prevent display error when rendoring
   lapList[lapList.length-1].timer = timer;
   lapList.push({lapCount,timer});
