@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.row {
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+  font-size: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;  
+}
+
+.row:active {
+  background-color: gray;
+}
