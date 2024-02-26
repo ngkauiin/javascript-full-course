@@ -2,6 +2,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
 .row {
   height: 100px;
   width: 100px;
@@ -11,9 +15,26 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: max-content max-content max-content;  
+  grid-template-columns: 1fr;  
+  /* grid-auto-flow: row; */
+  row-gap: 10px;
+
+}
+
+.column {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  column-gap: 10px;
 }
 
 .row:active {
   background-color: gray;
+}
+
+.row.X{
+  background-color: red;
+}
+
+.row.O {
+  background-color: blue;
 }
