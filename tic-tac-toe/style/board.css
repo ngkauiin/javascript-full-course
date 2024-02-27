@@ -1,0 +1,53 @@
+.board-container {
+  width: 306px;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  position: relative;
+}
+
+.row {
+  height: 100px;
+  width: 100px;
+  font-size: 50px;
+  display: flex;
+  background-color: black;
+}
+
+.grid {
+  background-color: white;
+  z-index: 1;
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr;  
+  row-gap: 3px;
+}
+
+.column {
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  column-gap: 3px;
+}
+
+.transparent .cross,
+.transparent .circle {
+  opacity: 0;
+}
+
+.grid.transparent {
+  background-color: black;
+}
+
+.row.no-win .cross,
+.row.no-win .circle {
+  opacity: 0.5;
+}
+
+.reset {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}

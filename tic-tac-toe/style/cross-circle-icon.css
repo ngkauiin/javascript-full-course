@@ -1,0 +1,43 @@
+@keyframes enlarge {
+  from {transform: scale(0.6);}
+  to {transform: scale(1.1);}
+}
+
+.cross,
+.circle {
+  animation: enlarge 0.15s;
+}
+
+.cross {
+  position: relative;
+  margin-left: 50px;
+  margin-top: 10px;
+}
+
+.cross .after,
+.cross .before {
+  display:inline-block;
+  background-color: white;
+  width: 10px;
+  height: 80px;
+  border-radius: 2px;
+  position: absolute;
+  left: -5px;
+}
+
+.cross .before {
+  transform: rotate(45deg);
+}
+
+.cross .after {
+  transform: rotate(-45deg);
+}
+
+.circle {
+  margin-top: 15px;
+  margin-left: 15px;
+  border: 10px solid white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

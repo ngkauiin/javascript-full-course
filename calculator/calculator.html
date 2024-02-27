@@ -1,123 +1,125 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Calculator</title>
-    <link rel="stylesheet" href="calculator.css">
-  </head>
-  <body>
-    <p class="display"></p>
-    <div class="button-container">
 
-      <button class="number-button" onclick="
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+  <p class="display"> </p>
+  <div class="button-container">
+
+    <button class="number-button" onclick="
         updateCalculation('1')
         displayCalculation()
       ">1</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('2')
         displayCalculation()
       ">2</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('3')
         displayCalculation()
       ">3</button>
-      <button class="right-size-button" onclick="
+    <button class="right-size-button" onclick="
         updateCalculation(' + ')
         displayCalculation()
       ">+</button>
 
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('4')
         displayCalculation()
       ">4</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('5')
         displayCalculation()
       ">5</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('6')
         displayCalculation()
       ">6</button>
-      <button class="right-size-button" onclick="
+    <button class="right-size-button" onclick="
         updateCalculation(' - ')
         displayCalculation()
       ">-</button>
 
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('7')
         displayCalculation()
       ">7</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('8')
         displayCalculation()
       ">8</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('9')
         displayCalculation()
       ">9</button>
-      <button class="right-size-button"  onclick="
+    <button class="right-size-button" onclick="
         updateCalculation(' * ')
         displayCalculation()
       ">*</button>
 
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('0')
         displayCalculation()
       ">0</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('.')
         displayCalculation()
       ">.</button>
-      <button class="number-button" onclick="
+    <button class="number-button" onclick="
         updateCalculation('=')
         displayCalculation()
-      "
-      >=</button>
-      <button class="right-size-button" onclick="
+      ">=</button>
+    <button class="right-size-button" onclick="
         updateCalculation('/')
         displayCalculation()
       ">/</button>
-      <button class="clear-button" onclick="
+    <button class="clear-button" onclick="
         updateCalculation('clear')
         displayCalculation()
       ">Clear</button>
 
-    </div>
-    
+  </div>
 
 
-    <script>
-      addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          updateCalculation('=');
-          displayCalculation();
-        }
-      });
-      
-      let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
-      displayCalculation();
-      function updateCalculation(button) {
-        if (button === '=') {
-          if (calculation) {
-            calculation = eval(calculation);
-          } 
-        } else if (button === 'clear') {
-          calculation = ''
-          localStorage.removeItem('calculation');
-          console.log('Cleared');
-          document.querySelector('.display').classList.add('is-empty');
-          return;
-        } else {
-          calculation+=button;
-        }
-        localStorage.setItem('calculation',JSON.stringify(calculation))
-        document.querySelector('.display').classList.remove('is-empty');
 
-        console.log(calculation)
+  <script>    
+    addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        updateCalculation('=');
+        displayCalculation();
       }
+    });
 
-      function displayCalculation() {
-        document.querySelector('.display').innerHTML = calculation;
+    let calculation = JSON.parse(localStorage.getItem('calculation')) || '';
+    displayCalculation();
+    function updateCalculation(button) {
+      if (button === '=') {
+        if (calculation) {
+          calculation = eval(calculation);
+        }
+      } else if (button === 'clear') {
+        calculation = ''
+        localStorage.removeItem('calculation');
+        console.log('Cleared');
+        document.querySelector('.display').classList.add('is-empty');
+        return;
+      } else {
+        calculation += button;
       }
-    </script>
-  </body>
+      localStorage.setItem('calculation', JSON.stringify(calculation))
+      document.querySelector('.display').classList.remove('is-empty');
+
+      console.log(calculation)
+    }
+
+    function displayCalculation() {
+      document.querySelector('.display').innerHTML = calculation;
+    }
+  </script>
+</body>
+
 </html>
